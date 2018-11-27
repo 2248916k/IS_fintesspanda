@@ -50,6 +50,7 @@ var canvas = document.getElementsByTagName('canvas')[0];
 //canvas.style.height = '180px';
 
 var ctx2 = document.getElementById('myLine').getContext('2d');
+canvas.style.backgroundColor='white';
 var chart2 = new Chart(ctx2, {
     // The type of chart we want to create
     type: 'line',
@@ -76,6 +77,7 @@ var chart2 = new Chart(ctx2, {
                        // callback: function(value, index, values) {
                          //   return '$' + value;
                         //}
+                        autoSkip:true,
                     },
                 scaleLabel:{
                     display:true,
@@ -90,6 +92,7 @@ var chart2 = new Chart(ctx2, {
                        // callback: function(value, index, values) {
                          //   return '$' + value;
                         //}
+                        autoSkip:true,
                     },
                 scaleLabel:{
                     display:true,
@@ -101,8 +104,12 @@ var chart2 = new Chart(ctx2, {
 
         }
     }
+
+
 });
+//ctx2.style.backgroundColor='rgba(255,0,0,255)';
 });
+
 });
 
 
