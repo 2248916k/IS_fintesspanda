@@ -5,6 +5,7 @@ function loadData(){
 
     var track = JSON.parse(localStorage.getItem("track"));
     var totalHR=parseInt(track[0]["hr"]);
+
     for(i=1; i<track.length; i++){
         dist+=calcDist(track[i-1]["lat"],track[i-1]["lon"],track[i]["lat"],track[i]["lon"]);
         totalHR+=parseInt(track[i]["hr"]);

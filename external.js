@@ -20,6 +20,7 @@ if(typeof(DOMParser) == 'undefined') {
             xmldata.send(null);
             return xmldata.responseXML;
         }
+		
     }
 }
 

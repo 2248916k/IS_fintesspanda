@@ -21,6 +21,7 @@ div#bar.row{
 	border-color: black;
 	height:120px;
 	width:100%;
+	margin: 0;
 	//height=50px;
 	//background-color:#fff2e6; //beige
 
@@ -40,10 +41,12 @@ border-width: 3px;
 #body{
     background-color:#fff2e6;
     width:100%;
+	overflow:auto;
 }
 
 canvas{
    // background-color:white; //beige
+
 }
 
 .beblock{
@@ -57,3 +60,4 @@ button{
   border-width: 1px;
   border-color:black;
 }
+
