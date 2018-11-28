@@ -36,7 +36,7 @@ localStorage.setItem("track",JSON.stringify(trkseg));
 mymap.setView([trkseg[0]["lat"], trkseg[0]["lon"]], 13);
 var firstpolyline = new L.Polyline(pointList, {
     color: 'rgb(255, 99, 132)',
-    weight: 3,
+    weight: 10,
     opacity: 0.8,
     smoothFactor: 1
 });

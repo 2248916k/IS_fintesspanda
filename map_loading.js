@@ -11,10 +11,42 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
 var popup = L.popup();
 
 function onMapClick(e) {
+    var coors=e.latlng;
+    var lat=parseInt(coors["lat"]).toFixed(6);
+   // console.log(lat);
+
+    var lon=parseInt(coors["lng"]).toFixed(6);
+    var from_track=false;
+    var hr,cad;
+    var track = JSON.parse(localStorage.getItem("track"));
+    //console.log(track[0]["lon"]);
+    for(i=0;i<track.length;i++){
+         var trklat=parseInt(track[i]["lat"]);
+         if(trklat.toFixed(6)==lat){
+             var trklon=parseInt(track[i]["lon"]);
+             if((trklon.toFixed(6))==lon){
+                 hr=track[i]["hr"];
+                 cad=track[i]["cad"];
+                 from_track=true;
+                 break;
+                 console.log("true");
+             }
+         }
+    }
+
+    if(from_track==false){
+
+    console.log(coors);
     popup
         .setLatLng(e.latlng)
         .setContent("You clicked the map at " + e.latlng.toString())
         .openOn(mymap);
+    }else{
+    popup
+        .setLatLng(e.latlng)
+        .setContent("Heart rate was:" + parseInt(hr).toFixed(0)+"  Cadence was: "+parseInt(cad).toFixed(0))
+        .openOn(mymap);
+    }
 }
 
 mymap.on('click', onMapClick);
