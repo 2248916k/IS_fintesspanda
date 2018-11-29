@@ -8,7 +8,9 @@ var cadence=[];
         var trkseg = [];
         var pointList=[]; //coordinates for drawing track
 
-        if (xmlDoc.getElementsByTagName("type")=="running"){
+        // if (xmlDoc.getElementsByTagName("type")[0].childNodes[0].nodeValue ==="running"){
+        var type = xmlDoc.getElementsByTagName("type");
+        if (type.length !== 0){
          for (i = 0; i < xmlDoc.getElementsByTagName("trkpt").length; i++) {
             trkpt = {
             "lat": parseFloat(xmlDoc.getElementsByTagName("trkpt")[i].attributes["lat"].value),
