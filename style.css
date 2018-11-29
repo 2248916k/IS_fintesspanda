@@ -5,25 +5,34 @@
 	display:block;
 	margin-left:auto;
 	margin-right:auto;
-	border-color: black;
+	/*border-color: black;
 	 border-style: solid;
-	  border-radius: 20px;
+	  border-radius: 50px;
     border-width: 2px;
+    box-shadow: 10px 10px 7px #224167 ;
+      background-color:seashell; //beige*/
+
+    /*
 	//background-color:white;
 	//background-color:#f4f8fb;
+	//
+	*/
 	padding: 0px;
-	box-shadow: 10px 10px 7px #224167 ;
-	background-color:#dce6f3; //beige
+
+
+	/*background-image: radial-gradient(closest-corner at 60% 55%, seashell,seashell, lightblue);*/
+
 }
 div#bar.row{
-	background-color:#4f84c4; //pink
-	border-bottom: 1.5px solid;
+/*background-color: #4f84c4; //pink */
+	/*border-bottom: 1.5px solid;*/
 	border-color: black;
 	height:120px;
 	width:100%;
 	margin: 0;
-	//height=50px;
-	//background-color:#fff2e6; //beige
+	/*//height=50px;
+	//background-color:#fff2e6; //beige*/
+    background-image: linear-gradient(to right,#4f84c4,seashell, #4f84c4);
 
 }
 head div{
@@ -39,7 +48,7 @@ border-width: 3px;
 
 
 #body{
-    background-color:#dce6f3 ;
+    background-color:#e2ecf7;
     width:100%;
 	overflow:auto;
 }
@@ -74,4 +83,26 @@ button:active {
   box-shadow: 0 2px #666;
   transform: translateY(2px);
 }
-
+p.col-sm-6{
+	
+	text-align:center;
+	
+}
+div.col-sm-6{
+	font-size:20px;
+	
+}
+#caloriee{
+	  text-shadow: 0 1px 0 #ccc,
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb,
+               0 4px 0 #b9b9b9,
+               0 5px 0 #aaa,
+               0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15);
+}
