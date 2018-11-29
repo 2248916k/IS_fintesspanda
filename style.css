@@ -52,7 +52,7 @@ border-width: 3px;
     width:100%;
 	overflow:auto;
 	
-	background: url(panda.png)no-repeat right bottom, url(k.png)repeat;
+	background: url(panda.png)no-repeat center bottom, url(k.png)repeat;
 	background-attachment:fixed;
     background-size: 600px 200px
 }
@@ -123,3 +123,5 @@ tr, td {
     padding: 5px;
     text-align: left;
 }
+
+c
