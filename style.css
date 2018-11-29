@@ -35,6 +35,11 @@ div#bar.row{
     background-image: linear-gradient(to right,#4f84c4,seashell, #4f84c4);
 
 }
+/*THIS DOES NOT SELECT THE FUCKIN THING*/
+button#load.col-sm-1{
+	margin-top:0px;
+}
+
 head div{
 	border-bottom: 1px solid;
 	border-color:black;
@@ -46,6 +51,10 @@ border-style: solid;
 border-width: 3px;
 }
 
+/*THIS DOES NOT SELECT THE FUCKIN THING*/
+caption.col-sm-6{
+color:black;
+}
 
 #body{
     background-color:#e2ecf7;
@@ -69,16 +78,32 @@ html,body{
 display:block;
 }
 
+#load{
+	font-style:bold;
+	font-size:20px;
+} 
+
+.col-sm-3{
+	font-size:20px;
+	color: darkblue;
+	font-weight: bold;
+	font-family: "Lobster", serif;
+	
+	
+}
+
+
 button{
   display: inline-block;
   padding: 10px 15px;
   font-size: 24px;
+ 
   cursor: pointer;
   text-align: center;
   text-decoration: none;
   outline: none;
   color: #3c7bc9 ;
-  background-color: #3c7bc9 ;
+  background-color: #558dd1 ;
   border: none;
   border-radius: 10px;
   box-shadow: 0 5px #999;
@@ -86,6 +111,7 @@ button{
 button:hover {background-color: #2a5c9a }
 
 button:active {
+ 
   background-color: #3c7bc9 ;
   box-shadow: 0 2px #666;
   transform: translateY(2px);
@@ -99,24 +125,21 @@ div.col-sm-6{
 	font-size:20px;
 	
 }
-#caloriee{
-	  text-shadow: 0 1px 0 #ccc,
-               0 2px 0 #c9c9c9,
-               0 3px 0 #bbb,
-               0 4px 0 #b9b9b9,
-               0 5px 0 #aaa,
-               0 6px 1px rgba(0,0,0,.1),
-               0 0 5px rgba(0,0,0,.1),
-               0 1px 3px rgba(0,0,0,.3),
-               0 3px 5px rgba(0,0,0,.2),
-               0 5px 10px rgba(0,0,0,.25),
-               0 10px 10px rgba(0,0,0,.2),
-               0 20px 20px rgba(0,0,0,.15);
+#cal{
+	
+font-size:24px;
+	color: darkblue;
+	font-weight: bold;
+	font-family: "Lobster", serif;
+}
+#cal,#weight,#Text{
+
+	margin-left:150px;
 }
 
 table, tr, td {
     border: 1px solid black;
-    border-collapse: collapse;
+    ,border-collapse: collapse;
     background-color: seashell;
 }
 table{
