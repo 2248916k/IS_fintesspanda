@@ -1,6 +1,9 @@
 var heartRatesCad=[]; //hr for drawing graphs
 var cadence=[];
     $("#fileinput").change(function() {
+        $("#load").prop('disabled',false);
+         $("#submit").prop('disabled',false);
+
         loadFile($("#fileinput")[0], function(xml){
         var xmlDoc = new DOMParser().parseFromString(xml, "text/xml");
         //var xmlDoc = xml;
@@ -70,7 +73,8 @@ var canvas = document.getElementsByTagName('canvas')[0];
 //canvas.style.height = '180px';
 
 var ctx2 = document.getElementById('myLine').getContext('2d');
-canvas.style.backgroundColor='white';
+canvas.style.backgroundColor='seashell';
+canvas.style.border='1px solid black';
 var chart2 = new Chart(ctx2, {
     // The type of chart we want to create
     type: 'line',
