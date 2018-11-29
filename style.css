@@ -51,7 +51,7 @@ border-width: 3px;
     background-color:#e2ecf7;
     width:100%;
 	overflow:auto;
-	background: url(panda.png)no-repeat right , url(k.png)repeat; 
+	background: url(panda.png)no-repeat center bottom, url(k.png)repeat;
     background-size: 600px 200px
 }
 
