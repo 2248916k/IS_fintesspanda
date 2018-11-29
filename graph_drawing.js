@@ -9,69 +9,74 @@ var cadence=[];
         var pointList=[]; //coordinates for drawing track
 
         // if (xmlDoc.getElementsByTagName("type")[0].childNodes[0].nodeValue ==="running"){
-        var type = xmlDoc.getElementsByTagName("type");
-        if (type.length !== 0){
-         for (i = 0; i < xmlDoc.getElementsByTagName("trkpt").length; i++) {
-            trkpt = {
-            "lat": parseFloat(xmlDoc.getElementsByTagName("trkpt")[i].attributes["lat"].value),
-            "lon": xmlDoc.getElementsByTagName("trkpt")[i].getAttributeNode("lon").nodeValue,
-            "ele": xmlDoc.getElementsByTagName("ele")[i].childNodes[0].nodeValue,
-            "time":xmlDoc.getElementsByTagName("time")[i].childNodes[0].nodeValue,
-            "hr": xmlDoc.getElementsByTagName("ns3:hr")[i].childNodes[0].nodeValue,
-            "cad": xmlDoc.getElementsByTagName("ns3:cad")[i].childNodes[0].nodeValue
-            };
-            trkseg.push(trkpt);
-            pointList.push(new L.LatLng(trkpt["lat"],trkpt["lon"]));
-            var point={x:trkpt["cad"],y:trkpt["hr"]};
-            heartRatesCad.push(point);
-            if(i%10==0){
-               cadence.push(trkpt["cad"]);
+        try{
+          var type = xmlDoc.getElementsByTagName("type");
+          if (type.length !== 0){
+           for (i = 0; i < xmlDoc.getElementsByTagName("trkpt").length; i++) {
+              trkpt = {
+              "lat": parseFloat(xmlDoc.getElementsByTagName("trkpt")[i].attributes["lat"].value),
+              "lon": xmlDoc.getElementsByTagName("trkpt")[i].getAttributeNode("lon").nodeValue,
+              "ele": xmlDoc.getElementsByTagName("ele")[i].childNodes[0].nodeValue,
+              "time":xmlDoc.getElementsByTagName("time")[i].childNodes[0].nodeValue,
+              "hr": xmlDoc.getElementsByTagName("ns3:hr")[i].childNodes[0].nodeValue,
+              "cad": xmlDoc.getElementsByTagName("ns3:cad")[i].childNodes[0].nodeValue
+              };
+              trkseg.push(trkpt);
+              pointList.push(new L.LatLng(trkpt["lat"],trkpt["lon"]));
+              var point={x:trkpt["cad"],y:trkpt["hr"]};
+              heartRatesCad.push(point);
+              if(i%10==0){
+                 cadence.push(trkpt["cad"]);
+              }
             }
-          }
-       }
-       else{
-         for (i = 0; i < xmlDoc.getElementsByTagName("trkpt").length; i++) {
-            trkpt = {
-            "lat": parseFloat(xmlDoc.getElementsByTagName("trkpt")[i].attributes["lat"].value),
-            "lon": xmlDoc.getElementsByTagName("trkpt")[i].getAttributeNode("lon").nodeValue,
-            "ele": xmlDoc.getElementsByTagName("ele")[i].childNodes[0].nodeValue,
-            "time":xmlDoc.getElementsByTagName("time")[i].childNodes[0].nodeValue,
-            "hr": xmlDoc.getElementsByTagName("gpxtpx:hr")[i].childNodes[0].nodeValue,
-            };
-            // if(xmlDoc.getElementsByTagName("trkpt").childNodes[2][0][0])
-            trkseg.push(trkpt);
-            pointList.push(new L.LatLng(trkpt["lat"],trkpt["lon"]));
          }
-         // for (i = 0; i < xmlDoc.getElementsByTagName("gpxtpx:atemp").length; i++) {
-         //   trkseg[i]["atemp"] = xmlDoc.getElementsByTagName("gpxtpx:hr")[i].childNodes[0].nodeValue;
-         // }
+         else{
+           for (i = 0; i < xmlDoc.getElementsByTagName("trkpt").length; i++) {
+              trkpt = {
+              "lat": parseFloat(xmlDoc.getElementsByTagName("trkpt")[i].attributes["lat"].value),
+              "lon": xmlDoc.getElementsByTagName("trkpt")[i].getAttributeNode("lon").nodeValue,
+              "ele": xmlDoc.getElementsByTagName("ele")[i].childNodes[0].nodeValue,
+              "time":xmlDoc.getElementsByTagName("time")[i].childNodes[0].nodeValue,
+              "hr": xmlDoc.getElementsByTagName("gpxtpx:hr")[i].childNodes[0].nodeValue,
+              };
+              // if(xmlDoc.getElementsByTagName("trkpt").childNodes[2][0][0])
+              trkseg.push(trkpt);
+              pointList.push(new L.LatLng(trkpt["lat"],trkpt["lon"]));
+           }
+           // for (i = 0; i < xmlDoc.getElementsByTagName("gpxtpx:atemp").length; i++) {
+           //   trkseg[i]["atemp"] = xmlDoc.getElementsByTagName("gpxtpx:hr")[i].childNodes[0].nodeValue;
+           // }
+        }
+        //test=[1,2,3];
+        //console.log(test[0]);
+        // console.log(trkseg[1]["atemp"]);
+        localStorage.setItem("track",JSON.stringify(trkseg));
+        //localStorage.setItem("test",JSON.stringify(test));
+        //localStorage.setItem("trackk",'5');
+        //draw track
+        mymap.setView([trkseg[0]["lat"], trkseg[0]["lon"]], 13);
+        var firstpolyline = new L.Polyline(pointList, {
+            color: 'rgb(255, 99, 132)',
+            weight: 10,
+            opacity: 0.8,
+            smoothFactor: 1
+        });
       }
-//test=[1,2,3];
-//console.log(test[0]);
-// console.log(trkseg[1]["atemp"]);
-localStorage.setItem("track",JSON.stringify(trkseg));
-//localStorage.setItem("test",JSON.stringify(test));
-//localStorage.setItem("trackk",'5');
-//draw track
-mymap.setView([trkseg[0]["lat"], trkseg[0]["lon"]], 13);
-var firstpolyline = new L.Polyline(pointList, {
-    color: 'rgb(255, 99, 132)',
-    weight: 10,
-    opacity: 0.8,
-    smoothFactor: 1
-});
-firstpolyline.addTo(mymap);
+      catch(err){
+        alert("Invalid file");
+      }
+    firstpolyline.addTo(mymap);
 
-//drawing graph
-var canvas = document.getElementsByTagName('canvas')[0];
-//canvas.width  = 50;
-//canvas.height = 50;
-//canvas.style.width  = '100px';
-//canvas.style.height = '180px';
+    //drawing graph
+    var canvas = document.getElementsByTagName('canvas')[0];
+    //canvas.width  = 50;
+    //canvas.height = 50;
+    //canvas.style.width  = '100px';
+    //canvas.style.height = '180px';
 
-var ctx2 = document.getElementById('myLine').getContext('2d');
-canvas.style.backgroundColor='white';
-var chart2 = new Chart(ctx2, {
+    var ctx2 = document.getElementById('myLine').getContext('2d');
+    canvas.style.backgroundColor='white';
+    var chart2 = new Chart(ctx2, {
     // The type of chart we want to create
     type: 'line',
     responsive:true,
