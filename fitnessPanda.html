@@ -48,7 +48,7 @@
 
 		</form>
 	</div>
-	<button class="col-sm-1" onclick="loadData()" >Load</button>
+	<button class="col-sm-1" onclick="loadData()" id="load" disabled>Load</button>
 </div>
 	<div class="row" style="padding:10px 10px 10px;">
 			<div id="map" class="col-sm-6" ></div>
@@ -56,36 +56,45 @@
 				<p> Check calorie expenditure</p>
 				<span> Enter weight in kg:</span>
 				<input type="text" id="Text" name="TextBox">
-				<button onclick="myFunction()" >Submit</button>
+				<button onclick="myFunction()" id="submit" disabled >Submit</button>
 			</div>
 
 	</div>
-    <div class="row">
+    <div class="row" style="padding:20px 20px 20px;">
+
+		<div class="col-sm-6" id="myCanvas" hidden>
+			<p> Chart: </p>
+			<canvas id="myLine" style="width:40%; height: 300px; display: relative"></canvas>
+		</div>
         <div class="col-sm-6">
-            <p>Summary:</p>
-            <span id="dist" class="beblock"> Distance:</span>
-            <span id="time" class="beblock"> Duration:</span>
-			<span id="teest"> </span>
-            <span id="avghr" class="beblock">Average hr:</span>
+
+			<table hidden id="table">
+			<caption>Summary:</caption>
+			<tr>
+				<td> Distance:</td>
+				<td id="dist" class="beblock"> Please load a gpx file  </td>
+			</tr>
+            <tr>
+				<td>Duration:</td>
+                <td id="time" class="beblock"> Please load a gpx file     </td>
+			</tr>
+			<tr>
+				<td>Average hr: </td>
+                <td id="avghr" class="beblock"> Please load a gpx file    </td>
+			</tr>
+			<tr>
+				<td>Max hr: </td>
+                <td id="maxhr" class="beblock"> Please load a gpx file    </td>
+			</tr>
+			<tr>
+				<td>Max cadence: </td>
+                <td id="maxcad" class="beblock"> Please load a gpx file    </td>
+			</tr>
+			</table>
         </div>
     </div>
-	<div class="row" style="padding:20px 20px 20px;">
-				<div class="col-sm-6" id="myCanvas" style="width: 50%; height: 180; display: relative">
-					<canvas id="myLine" style="width: 50%; height: 180; display: relative"></canvas>
-				</div>
-	</div>
 
 
-
-<script>
-function myFun(){
-    var track = JSON.parse(localStorage.getItem("track"));
-	//document.getElementById("teest").innerHTML = storedNames[0]["hr"];
-	document.getElementById("teest").innerHTML = track[0]["hr"];
-	//console.log(localStorage.getItem("track[0]['hr']"));
-	//console.log(localStorage.getItem("trackk"));
-}
-</script>
 
 <script src="map_loading.js"></script>
 <script src="graph_drawing.js"></script>

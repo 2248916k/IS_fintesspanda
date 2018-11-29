@@ -12,24 +12,24 @@ var popup = L.popup();
 
 function onMapClick(e) {
     var coors=e.latlng;
-    var lat=parseInt(coors["lat"]).toFixed(6);
-   // console.log(lat);
+    var lat=parseInt(coors["lat"]);//.toFixed(20);
+   console.log("click");
 
-    var lon=parseInt(coors["lng"]).toFixed(6);
+    var lon=parseInt(coors["lng"]);//.toFixed(20);
     var from_track=false;
     var hr,cad;
     var track = JSON.parse(localStorage.getItem("track"));
     //console.log(track[0]["lon"]);
     for(i=0;i<track.length;i++){
          var trklat=parseInt(track[i]["lat"]);
-         if(trklat.toFixed(6)==lat){
+         if(trklat==lat){
              var trklon=parseInt(track[i]["lon"]);
-             if((trklon.toFixed(6))==lon){
+             if(trklon==lon){
                  hr=track[i]["hr"];
                  cad=track[i]["cad"];
                  from_track=true;
                  break;
-                 console.log("true");
+
              }
          }
     }

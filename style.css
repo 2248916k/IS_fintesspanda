@@ -52,15 +52,12 @@ border-width: 3px;
     width:100%;
 	overflow:auto;
 	
-	background: url(panda.png)no-repeat right bottom, url(k.png)repeat;
+	background: url(panda.png)no-repeat center bottom, url(k.png)repeat;
 	background-attachment:fixed;
     background-size: 600px 200px
 }
 
-canvas{
-   // background-color:white; //beige
 
-}
 
 .beblock{
 display:block;
@@ -110,3 +107,21 @@ div.col-sm-6{
                0 10px 10px rgba(0,0,0,.2),
                0 20px 20px rgba(0,0,0,.15);
 }
+
+table, tr, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    background-color: seashell;
+}
+table{
+     width:80%;
+     height:80%;
+     position:center;
+     padding:20px;
+
+}
+tr, td {
+    padding: 5px;
+    text-align: left;
+}
+
