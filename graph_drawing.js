@@ -1,8 +1,4 @@
     $("#fileinput").change(function() {
-        $("#load").prop('disabled',false);
-         $("#submit").prop('disabled',false);
-         $("#table").prop('hidden',false);
-          $("#myCanvas").prop('hidden',false);
 
         loadFile($("#fileinput")[0], function(xml){
         var xmlDoc = new DOMParser().parseFromString(xml, "text/xml");
@@ -80,6 +76,12 @@
         //localStorage.setItem("test",JSON.stringify(test));
         //localStorage.setItem("trackk",'5');
         //draw track
+        //$("#load").prop('disabled',false);
+         $("#submit").prop('disabled',false);
+         $("#table").prop('hidden',false);
+          $("#myCanvas").prop('hidden',false);
+
+        $("#load").click();
         mymap.setView([trkseg[0]["lat"], trkseg[0]["lon"]], 13);
         var firstpolyline = new L.Polyline(pointList, {
             color: 'rgb(255, 99, 132)',

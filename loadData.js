@@ -29,7 +29,7 @@ function loadData(){
     //console.log(start,end,random);
     var diff = Math.abs(end-start)/60000;
    // console.log(diff);
-    document.getElementById("time").innerHTML=diff+"min";
+    document.getElementById("time").innerHTML=diff.toFixed(2)+"min";
     localStorage.setItem("duration",diff);
     var avgHR=totalHR/(track.length);
     document.getElementById("avghr").innerHTML=avgHR.toFixed(0)+"bpm";
