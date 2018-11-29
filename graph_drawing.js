@@ -4,6 +4,7 @@ var cadence=[];
         $("#load").prop('disabled',false);
          $("#submit").prop('disabled',false);
          $("#table").prop('hidden',false);
+          $("#myCanvas").prop('hidden',false);
 
         loadFile($("#fileinput")[0], function(xml){
         var xmlDoc = new DOMParser().parseFromString(xml, "text/xml");

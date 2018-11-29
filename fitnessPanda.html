@@ -62,8 +62,9 @@
 	</div>
     <div class="row" style="padding:20px 20px 20px;">
 
-		<div class="col-sm-6" id="myCanvas" >
-			<canvas id="myLine" style="width: 20%; height: 180; display: relative"></canvas>
+		<div class="col-sm-6" id="myCanvas" hidden>
+			<p> Chart: </p>
+			<canvas id="myLine" style="width:40%; height: 300px; display: relative"></canvas>
 		</div>
         <div class="col-sm-6">
 
@@ -81,24 +82,19 @@
 				<td>Average hr: </td>
                 <td id="avghr" class="beblock"> Please load a gpx file    </td>
 			</tr>
+			<tr>
+				<td>Max hr: </td>
+                <td id="maxhr" class="beblock"> Please load a gpx file    </td>
+			</tr>
+			<tr>
+				<td>Max cadence: </td>
+                <td id="maxcad" class="beblock"> Please load a gpx file    </td>
+			</tr>
 			</table>
         </div>
     </div>
 
 
-
-
-<script>
-/*
-function myFun(){
-    var track = JSON.parse(localStorage.getItem("track"));
-	//document.getElementById("teest").innerHTML = storedNames[0]["hr"];
-	document.getElementById("teest").innerHTML = track[0]["hr"];
-	//console.log(localStorage.getItem("track[0]['hr']"));
-	//console.log(localStorage.getItem("trackk"));
-}
-*/
-</script>
 
 <script src="map_loading.js"></script>
 <script src="graph_drawing.js"></script>
