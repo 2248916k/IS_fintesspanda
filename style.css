@@ -54,10 +54,24 @@ display:block;
 }
 
 button{
-  background-color:#4f84c4;
-  border-radius: 2px;
-  border-style: solid;
-  border-width: 1px;
-  border-color:black;
+  display: inline-block;
+  padding: 10px 15px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #3c7bc9 ;
+  background-color: #3c7bc9 ;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 5px #999;
+}
+button:hover {background-color: #2a5c9a }
+
+button:active {
+  background-color: #3c7bc9 ;
+  box-shadow: 0 2px #666;
+  transform: translateY(2px);
 }
 
