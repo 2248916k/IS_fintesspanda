@@ -10,13 +10,13 @@
 	  border-radius: 20px;
     border-width: 2px;
 	//background-color:white;
-	//background-color:#FF6384;
+	//background-color:#f4f8fb;
 	padding: 0px;
-	box-shadow: 10px 10px 7px #FF6384;
-	background-color:#fff2e6; //beige
+	box-shadow: 10px 10px 7px #224167 ;
+	background-color:#dce6f3; //beige
 }
 div#bar.row{
-	background-color:#FF6384; //pink
+	background-color:#4f84c4; //pink
 	border-bottom: 1.5px solid;
 	border-color: black;
 	height:120px;
@@ -39,7 +39,7 @@ border-width: 3px;
 
 
 #body{
-    background-color:#fff2e6;
+    background-color:#dce6f3 ;
     width:100%;
 	overflow:auto;
 }
@@ -54,7 +54,7 @@ display:block;
 }
 
 button{
-  background-color:#FF6384;
+  background-color:#4f84c4;
   border-radius: 2px;
   border-style: solid;
   border-width: 1px;
