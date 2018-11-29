@@ -1,5 +1,3 @@
-var heartRatesCad=[]; //hr for drawing graphs
-var cadence=[];
     $("#fileinput").change(function() {
         $("#load").prop('disabled',false);
          $("#submit").prop('disabled',false);
@@ -15,6 +13,8 @@ var cadence=[];
 
         // if (xmlDoc.getElementsByTagName("type")[0].childNodes[0].nodeValue ==="running"){
         try{
+          var heartRatesCad=[]; //hr for drawing graphs
+          var cadence=[];
           var type = xmlDoc.getElementsByTagName("type");
           if (type.length !== 0){
            for (i = 0; i < xmlDoc.getElementsByTagName("trkpt").length; i++) {
@@ -34,8 +34,13 @@ var cadence=[];
                  cadence.push(trkpt["cad"]);
               }
             }
+
+            generate_graph(cadence,"Heart rate vs Cadence",heartRatesCad,"Cadence");
          }
          else{
+           var durations=[];
+           var hrDuration=[];
+           var start=0;
            for (i = 0; i < xmlDoc.getElementsByTagName("trkpt").length; i++) {
               trkpt = {
               "lat": parseFloat(xmlDoc.getElementsByTagName("trkpt")[i].attributes["lat"].value),
@@ -45,9 +50,25 @@ var cadence=[];
               "hr": xmlDoc.getElementsByTagName("gpxtpx:hr")[i].childNodes[0].nodeValue,
               };
               // if(xmlDoc.getElementsByTagName("trkpt").childNodes[2][0][0])
+              if(i==0){
+                  start=new Date(trkpt["time"]);
+
+              }
               trkseg.push(trkpt);
               pointList.push(new L.LatLng(trkpt["lat"],trkpt["lon"]));
+
+              if(i%60==0){
+                 var time=new Date(trkpt["time"]);
+                 var diff=Math.round((Math.abs(time-start))/60000);
+                // console.log(diff,trkpt["hr"]);
+                 var p={x:diff,y:(parseInt(trkpt["hr"]))};
+                // console.log(point[x],point[y]);
+                 hrDuration.push(p);
+                 durations.push(diff);
+              }
            }
+
+           generate_graph(durations,"Heart rate vs duration",hrDuration,"Duration, min");
            // for (i = 0; i < xmlDoc.getElementsByTagName("gpxtpx:atemp").length; i++) {
            //   trkseg[i]["atemp"] = xmlDoc.getElementsByTagName("gpxtpx:hr")[i].childNodes[0].nodeValue;
            // }
@@ -69,16 +90,26 @@ var cadence=[];
       }
       catch(err){
         alert("Invalid file");
+        console.log(err.message);
+        return;
       }
     firstpolyline.addTo(mymap);
 
     //drawing graph
-    var canvas = document.getElementsByTagName('canvas')[0];
+
     //canvas.width  = 50;
     //canvas.height = 50;
     //canvas.style.width  = '100px';
     //canvas.style.height = '180px';
 
+
+});
+
+});
+
+function generate_graph(labels,label,data, xString){
+
+var canvas = document.getElementsByTagName('canvas')[0];
 var ctx2 = document.getElementById('myLine').getContext('2d');
 canvas.style.backgroundColor='seashell';
 canvas.style.border='1px solid black';
@@ -89,12 +120,12 @@ var chart2 = new Chart(ctx2, {
 
     // The data for our dataset
     data: {
-        labels:cadence,
+        labels:labels,
         datasets: [{
-            label: "Heart rate vs Cadence",
+            label: label,
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
-            data: heartRatesCad,
+            data: data,
             fill:false,
         }]
     },
@@ -104,10 +135,6 @@ var chart2 = new Chart(ctx2, {
         scales: {
                 yAxes: [{
                     ticks: {
-                        // Include a dollar sign in the ticks
-                       // callback: function(value, index, values) {
-                         //   return '$' + value;
-                        //}
                         autoSkip:true,
                     },
                 scaleLabel:{
@@ -119,15 +146,12 @@ var chart2 = new Chart(ctx2, {
                 }],
                 xAxes: [{
                     ticks: {
-                        // Include a dollar sign in the ticks
-                       // callback: function(value, index, values) {
-                         //   return '$' + value;
-                        //}
+
                         autoSkip:true,
                     },
                 scaleLabel:{
                     display:true,
-                    labelString:"Cadence",
+                    labelString:xString,
 
                 }
 
@@ -138,7 +162,6 @@ var chart2 = new Chart(ctx2, {
 
 
 });
-//ctx2.style.backgroundColor='rgba(255,0,0,255)';
-});
 
-});
+
+}
