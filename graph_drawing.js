@@ -32,6 +32,7 @@
             }
 
             generate_graph(cadence,"Heart rate vs Cadence",heartRatesCad,"Cadence");
+
          }
          else{
            var durations=[];
@@ -65,6 +66,7 @@
            }
 
            generate_graph(durations,"Heart rate vs duration",hrDuration,"Duration, min");
+
            // for (i = 0; i < xmlDoc.getElementsByTagName("gpxtpx:atemp").length; i++) {
            //   trkseg[i]["atemp"] = xmlDoc.getElementsByTagName("gpxtpx:hr")[i].childNodes[0].nodeValue;
            // }
@@ -77,11 +79,8 @@
         //localStorage.setItem("trackk",'5');
         //draw track
         //$("#load").prop('disabled',false);
-         $("#submit").prop('disabled',false);
-         $("#table").prop('hidden',false);
-          $("#myCanvas").prop('hidden',false);
 
-        $("#load").click();
+
         mymap.setView([trkseg[0]["lat"], trkseg[0]["lon"]], 13);
         var firstpolyline = new L.Polyline(pointList, {
             color: 'rgb(255, 99, 132)',
@@ -91,10 +90,18 @@
         });
       }
       catch(err){
-        alert("Invalid file");
+
         console.log(err.message);
+        $("#table").prop('hidden',true);
+        $("#myCanvas").prop('hidden',true);
+        alert("Invalid file");
         return;
       }
+
+     $("#submit").prop('disabled',false);
+     $("#table").prop('hidden',false);
+     $("#myCanvas").prop('hidden',false);
+     $("#load").click();
     firstpolyline.addTo(mymap);
 
     //drawing graph
