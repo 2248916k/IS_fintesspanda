@@ -5,10 +5,19 @@ function loadData(){
 
     var track = JSON.parse(localStorage.getItem("track"));
     var totalHR=parseInt(track[0]["hr"]);
+    var maxHR=0;
+    var maxCad=0;
 
     for(i=1; i<track.length; i++){
         dist+=calcDist(track[i-1]["lat"],track[i-1]["lon"],track[i]["lat"],track[i]["lon"]);
         totalHR+=parseInt(track[i]["hr"]);
+        if(parseInt(track[i]["hr"])>maxHR){
+            maxHR=parseInt(track[i]["hr"]);
+        }
+        if(parseInt(track[i]["cad"])>maxCad){
+            maxCad=parseInt(track[i]["cad"]);
+        }
+
         //console.log(totalHR);
     }
     //console.log(track.length)
@@ -24,7 +33,8 @@ function loadData(){
     localStorage.setItem("duration",diff);
     var avgHR=totalHR/(track.length);
     document.getElementById("avghr").innerHTML=avgHR.toFixed(0)+"bpm";
-
+    document.getElementById("maxhr").innerHTML=maxHR.toFixed(0)+"bpm";
+     document.getElementById("maxcad").innerHTML=maxCad.toFixed(0);
 
 }
 // return the distance between (lat1,lon1) and (lat2,lon2) in meter.
