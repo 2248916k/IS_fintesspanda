@@ -22,20 +22,21 @@ function loadData(){
     }
     //console.log(track.length)
 
-    document.getElementById("dist").innerHTML=(dist/1000).toFixed(2)+"km";
+    document.getElementById("dist").innerHTML=(dist/1000).toFixed(2)+" km";
     //2017-06-07T12:55:10.000Z
     var start=new Date(track[0]["time"]);
     var end=new Date(track[track.length-1]["time"]);
     //console.log(start,end,random);
     var diff = Math.abs(end-start)/60000;
    // console.log(diff);
-    document.getElementById("time").innerHTML=diff.toFixed(0)+"min";
+    document.getElementById("time").innerHTML=diff.toFixed(0)+" min";
     localStorage.setItem("duration",diff);
     var avgHR=totalHR/(track.length);
-    document.getElementById("avghr").innerHTML=avgHR.toFixed(0)+"bpm";
-    document.getElementById("maxhr").innerHTML=maxHR.toFixed(0)+"bpm";
+    document.getElementById("avghr").innerHTML=avgHR.toFixed(0)+" bpm";
+    document.getElementById("maxhr").innerHTML=maxHR.toFixed(0)+" bpm";
      document.getElementById("maxcad").innerHTML=maxCad.toFixed(0);
-
+     var speed=(dist/1000)/(diff/60);
+    document.getElementById("avgspeed").innerHTML=speed.toFixed(2)+ " kmph";
 }
 // return the distance between (lat1,lon1) and (lat2,lon2) in meter.
 function calcDist(lat1, lon1, lat2, lon2) {
