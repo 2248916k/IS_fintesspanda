@@ -20,9 +20,10 @@ function onMapClick(e) {
     var hr,cad;
     var track = JSON.parse(localStorage.getItem("track"));
     var cycling=JSON.parse(localStorage.getItem("isCycling"));
-    var strMessage="  Duration(min): ";
+
     //console.log(track[0]["lon"]);
     if(cycling==false){
+        var strMessage="  Cadence: ";
         for(i=0;i<track.length;i++){
              var trklat=parseInt(track[i]["lat"]);
              if(trklat==lat){
@@ -37,6 +38,7 @@ function onMapClick(e) {
              }
         }
     }else{
+        var strMessage="  Duration(min): ";
         var start=new Date(track[0]["time"]);
         for(i=0;i<track.length;i++){
              var trklat=parseInt(track[i]["lat"]);
