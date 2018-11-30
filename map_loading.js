@@ -19,21 +19,42 @@ function onMapClick(e) {
     var from_track=false;
     var hr,cad;
     var track = JSON.parse(localStorage.getItem("track"));
+    var cycling=JSON.parse(localStorage.getItem("isCycling"));
+    var strMessage="  Duration(min): ";
     //console.log(track[0]["lon"]);
-    for(i=0;i<track.length;i++){
-         var trklat=parseInt(track[i]["lat"]);
-         if(trklat==lat){
-             var trklon=parseInt(track[i]["lon"]);
-             if(trklon==lon){
-                 hr=track[i]["hr"];
-                 cad=track[i]["cad"];
-                 from_track=true;
-                 break;
+    if(cycling==false){
+        for(i=0;i<track.length;i++){
+             var trklat=parseInt(track[i]["lat"]);
+             if(trklat==lat){
+                 var trklon=parseInt(track[i]["lon"]);
+                 if(trklon==lon){
+                     hr=track[i]["hr"];
+                     cad=track[i]["cad"];
+                     from_track=true;
+                     break;
 
+                 }
              }
-         }
-    }
+        }
+    }else{
+        var start=new Date(track[0]["time"]);
+        for(i=0;i<track.length;i++){
+             var trklat=parseInt(track[i]["lat"]);
+             if(trklat==lat){
+                 var trklon=parseInt(track[i]["lon"]);
+                 if(trklon==lon){
+                     hr=track[i]["hr"];
+                     var time=new Date(track[i]["time"]);
+                     var diff=Math.round((Math.abs(time-start))/60000);
+                     cad=diff;
+                     from_track=true;
+                     break;
 
+                 }
+             }
+        }
+
+    }
     if(from_track==false){
 
     console.log(coors);
@@ -44,7 +65,7 @@ function onMapClick(e) {
     }else{
     popup
         .setLatLng(e.latlng)
-        .setContent("Heart rate was:" + parseInt(hr).toFixed(0)+"  Cadence was: "+parseInt(cad).toFixed(0))
+        .setContent("Heart rate was:" + parseInt(hr).toFixed(0)+strMessage+parseInt(cad).toFixed(0))
         .openOn(mymap);
     }
 }

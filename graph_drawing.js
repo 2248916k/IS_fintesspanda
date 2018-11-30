@@ -6,7 +6,7 @@
         var trkpt = {};
         var trkseg = [];
         var pointList=[]; //coordinates for drawing track
-
+        var cycling=false;
         // if (xmlDoc.getElementsByTagName("type")[0].childNodes[0].nodeValue ==="running"){
         try{
           var heartRatesCad=[]; //hr for drawing graphs
@@ -30,7 +30,8 @@
                  cadence.push(trkpt["cad"]);
               }
             }
-
+            cycling=false;
+            localStorage.setItem("isCycling",JSON.stringify(cycling));
             generate_graph(cadence,"Heart rate vs Cadence",heartRatesCad,"Cadence");
 
          }
@@ -64,7 +65,8 @@
                  durations.push(diff);
               }
            }
-
+           cycling=true;
+           localStorage.setItem("isCycling",JSON.stringify(cycling));
            generate_graph(durations,"Heart rate vs duration",hrDuration,"Duration, min");
 
            // for (i = 0; i < xmlDoc.getElementsByTagName("gpxtpx:atemp").length; i++) {

@@ -22,14 +22,14 @@ function loadData(){
     }
     //console.log(track.length)
 
-    document.getElementById("dist").innerHTML=dist.toFixed(2)+"m";
+    document.getElementById("dist").innerHTML=(dist/1000).toFixed(2)+"km";
     //2017-06-07T12:55:10.000Z
     var start=new Date(track[0]["time"]);
     var end=new Date(track[track.length-1]["time"]);
     //console.log(start,end,random);
     var diff = Math.abs(end-start)/60000;
    // console.log(diff);
-    document.getElementById("time").innerHTML=diff.toFixed(2)+"min";
+    document.getElementById("time").innerHTML=diff.toFixed(0)+"min";
     localStorage.setItem("duration",diff);
     var avgHR=totalHR/(track.length);
     document.getElementById("avghr").innerHTML=avgHR.toFixed(0)+"bpm";
