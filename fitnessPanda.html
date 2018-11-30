@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+	<title> Fitness Panda</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 
@@ -30,10 +31,10 @@
    
 </head>
 <body >
-<div class="row" id="bar" >
-	<img class=logo src="images\logooo.png" >
+<div class="row" id="bar" role="banner" >
+	<img class=logo src="images\logooo.png" alt="Logo with a panda">
 </div>
-<div id="body">
+<div id="body" role="main">
 <div class="row">
 	<div class="col-sm-3">
 	<p> Upload a gpx file. </p>
@@ -42,7 +43,7 @@
 <div class="row">
 	<div class="col-sm-3">
 
-		<form action='#' id="form" >
+		<form action='#' id="form" role="button" >
 					<input type='file' id='fileinput'>
 
 
@@ -51,43 +52,43 @@
 	<button class="col-sm-1" onclick="loadData()" id="load" disabled hidden>Load</button>
 </div>
 	<div class="row" style="padding:10px 10px 10px;">
-			<div id="map" class="col-sm-6" ></div>
+			<div id="map" class="col-sm-6" alt="map"></div>
 			<div class="col-sm-6">
 				<p> Check calorie expenditure</p>
 				<span> Enter weight in kg:</span>
 				<input type="text" id="Text" name="TextBox">
-				<button onclick="myFunction()" id="submit" disabled >Submit</button>
+				<button onclick="myFunction()" id="submit" role="button" disabled >Submit</button>
 			</div>
 
 	</div>
     <div class="row" style="padding:20px 20px 20px;">
 
-		<div class="col-sm-6" id="myCanvas" hidden>
+		<div class="col-sm-6" id="myCanvas"  hidden>
 			<p> Chart: </p>
-			<canvas id="myLine" style="width:40%; height: 300px; display: relative"></canvas>
+			<canvas alt="Plot of heart rate" id="myLine" style="width:40%; height: 300px; display: relative"></canvas>
 		</div>
         <div class="col-sm-6">
 
-			<table hidden id="table">
+			<table hidden id="table" alt="summary table">
 			<caption>Summary:</caption>
 			<tr>
-				<td> Distance:</td>
+				<th> Distance:</th>
 				<td id="dist" class="beblock"> Please load a gpx file  </td>
 			</tr>
             <tr>
-				<td>Duration:</td>
+				<th>Duration:</th>
                 <td id="time" class="beblock"> Please load a gpx file     </td>
 			</tr>
 			<tr>
-				<td>Average hr: </td>
+				<th>Average heart rate: </th>
                 <td id="avghr" class="beblock"> Please load a gpx file    </td>
 			</tr>
 			<tr>
-				<td>Max hr: </td>
+				<th>Max heart rate: </th>
                 <td id="maxhr" class="beblock"> Please load a gpx file    </td>
 			</tr>
 			<tr>
-				<td>Max cadence: </td>
+				<th>Max cadence: </th>
                 <td id="maxcad" class="beblock"> Please load a gpx file    </td>
 			</tr>
 			</table>
