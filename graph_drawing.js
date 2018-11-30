@@ -26,7 +26,7 @@
               pointList.push(new L.LatLng(trkpt["lat"],trkpt["lon"]));
               var point={x:trkpt["cad"],y:trkpt["hr"]};
               heartRatesCad.push(point);
-              if(i%10==0){
+              if(i%30==0){
                  cadence.push(trkpt["cad"]);
               }
             }
